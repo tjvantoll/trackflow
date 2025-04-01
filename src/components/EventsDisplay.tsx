@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { formatDate } from "@/lib/utils";
 
 interface NotehubEvent {
-  uid: string;
+  event: string;
   file: string;
   captured: string;
   received: string;
@@ -91,7 +91,7 @@ export default function EventsDisplay({ events }: EventsDisplayProps) {
           </thead>
           <tbody className="divide-y divide-gray-200">
             {sortedEvents.map((event) => (
-              <tr key={event.uid} className="hover:bg-gray-50">
+              <tr key={event.event} className="hover:bg-gray-50">
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                   {formatDate(getEventTime(event))}
                 </td>

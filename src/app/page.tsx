@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import { useEffect, useState } from "react";
 
 interface NotehubEvent {
-  uid: string;
+  event: string;
   file: string;
   captured: string;
   received: string;

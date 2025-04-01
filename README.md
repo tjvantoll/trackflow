@@ -6,12 +6,6 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -19,6 +13,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Environment
+
+To run this project you need to create a local `.env` file with the following three values for the project to run successfully.
+
+* `NOTEHUB_PROJECT_UID`: The [ProjectUID](https://dev.blues.io/api-reference/glossary/#projectuid) of your Notehub project.
+* `NOTEHUB_CLIENT_ID`: The client ID you receive from [enabling programmatic API access to your Notehub project](https://dev.blues.io/api-reference/notehub-api/api-introduction/#authentication-with-oauth-bearer-tokens).
+* `NOTEHUB_CLIENT_SECRET`: The client secret you receive from enabling programmatic API access to your Notehub project.
 
 ## Learn More
 

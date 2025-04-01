@@ -14,10 +14,13 @@ import { useEffect, useState } from "react";
 import { Slider } from "@mui/material";
 
 interface NotehubEvent {
-  uid: string;
+  event: string;
+  file: string;
+  captured: string;
+  received: string;
+  when: string;
   best_lat?: number;
   best_lon?: number;
-  when: number;
   body: {
     temperature?: number;
     voltage?: number;
@@ -32,7 +35,9 @@ export default function EventMap({ events }: EventMapProps) {
   const [mapReady, setMapReady] = useState(false);
 
   // Find the earliest and latest timestamps
-  const timestamps = events.map((event) => event.when).sort((a, b) => a - b);
+  const timestamps = events
+    .map((event) => parseInt(event.when, 10))
+    .sort((a, b) => a - b);
   const minTime = timestamps[0];
   const maxTime = timestamps[timestamps.length - 1];
 
@@ -54,8 +59,11 @@ export default function EventMap({ events }: EventMapProps) {
 
   // Sort events by timestamp in ascending order for the line
   const filteredEvents = [...events]
-    .filter((event) => event.when >= timeRange[0] && event.when <= timeRange[1])
-    .sort((a, b) => a.when - b.when);
+    .filter((event) => {
+      const eventTime = parseInt(event.when, 10);
+      return eventTime >= timeRange[0] && eventTime <= timeRange[1];
+    })
+    .sort((a, b) => parseInt(a.when, 10) - parseInt(b.when, 10));
 
   // Find center point from first event with valid coordinates
   const firstValidEvent = filteredEvents.find(
@@ -94,8 +102,8 @@ export default function EventMap({ events }: EventMapProps) {
     );
   }
 
-  function formatTimestamp(timestamp: number) {
-    const date = new Date(timestamp * 1000);
+  function formatTimestamp(timestamp: string) {
+    const date = new Date(parseInt(timestamp, 10) * 1000);
     const dateStr = date.toLocaleDateString("en-US", {
       month: "short",
       day: "numeric",
@@ -110,13 +118,15 @@ export default function EventMap({ events }: EventMapProps) {
   }
 
   function formatSliderLabel(value: number) {
-    const { dateStr, timeStr } = formatTimestamp(value);
+    const { dateStr, timeStr } = formatTimestamp(value.toString());
     return `${dateStr} ${timeStr}`;
   }
 
   const handleTimeRangeChange = (
-    _event: React.SyntheticEvent,
-    value: number | number[]
+    _event: Event,
+    value: number | number[],
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _activeThumb: number
   ) => {
     setTimeRange(value as [number, number]);
   };
@@ -201,7 +211,7 @@ export default function EventMap({ events }: EventMapProps) {
                 index === 0 || index === filteredEvents.length - 1;
               return (
                 <Marker
-                  key={event.uid}
+                  key={event.event}
                   position={[event.best_lat, event.best_lon]}
                   icon={customIcon}
                 >
@@ -242,7 +252,7 @@ export default function EventMap({ events }: EventMapProps) {
                           {event.body.voltage?.toFixed(2)}V
                         </li>
                         <li>
-                          <span className="font-semibold">UID:</span>{" "}
+                          <span className="font-semibold">Event:</span>{" "}
                           {event.event}
                         </li>
                       </ul>
