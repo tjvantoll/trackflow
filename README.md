@@ -8,11 +8,19 @@ To run this project you’ll need to have Node.js and npm installed. You can fin
 
 ## Environment
 
-To run this project you need to create a local `.env` file with the following three values for the project to run successfully.
+To run this project you’ll next need to create a local `.env` file with the following three values for the project to run successfully.
 
 * `NOTEHUB_PROJECT_UID`: The [ProjectUID](https://dev.blues.io/api-reference/glossary/#projectuid) of your Notehub project.
 * `NOTEHUB_CLIENT_ID`: The client ID you receive from [enabling programmatic API access to your Notehub project](https://dev.blues.io/api-reference/notehub-api/api-introduction/#authentication-with-oauth-bearer-tokens).
 * `NOTEHUB_CLIENT_SECRET`: The client secret you receive from enabling programmatic API access to your Notehub project.
+
+When you’re done the file should look something like this:
+
+```plaintext
+NOTEHUB_CLIENT_ID=abcd-efgh-ijkl
+NOTEHUB_CLIENT_SECRET=abcdefghijk1234567890lmnopqrstuvwxyz1234
+NOTEHUB_PROJECT_UID=app:1234-abcd-5678-efgh
+```
 
 ## Getting Started
 
