@@ -2,7 +2,7 @@
 
 A testing app for viewing `_track.qo` Notes from Notehub projects. Learn about this project and how to use it in [Configuring Your Notecard for GPS Tracking—A Beginner’s Guide](https://dev.blues.com/blog/gps-tracking-beginner-guide).
 
-![A screenshot of the TrackFlow app](https://gist.github.com/user-attachments/assets/a4e66900-a01c-4e03-bb8f-9163dd72bfa9)
+![A screenshot of the TrackFlow app](screenshot.png)
 
 ## Requirements
 
