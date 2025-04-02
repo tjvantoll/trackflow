@@ -1,6 +1,8 @@
-# Trackflow
+# TrackFlow
 
 A testing app for viewing `_track.qo` Notes from Notehub projects. Learn about this project and how to use it in [Configuring Your Notecard for GPS Tracking—A Beginner’s Guide](https://dev.blues.com/blog/gps-tracking-beginner-guide).
+
+![A screenshot of the TrackFlow app](https://gist.github.com/user-attachments/assets/a4e66900-a01c-4e03-bb8f-9163dd72bfa9)
 
 ## Requirements
 
@@ -30,7 +32,7 @@ With Node.js installed and your `.env` file in place, open a terminal, navigate 
 npm run dev
 ```
 
-This starts a local development server that runs the Trackflow project. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This starts a local development server that runs the TrackFlow project. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 If you want to make changes try updating the `app/page.tsx` file. The page auto-updates as you edit the file.
 
